@@ -64,22 +64,50 @@ p:last-of-type{margin-bottom:0}
 .buyLink:hover{background:color-mix(in srgb, var(--accent) 85%, black 15%); transform:translateY(-1px)}
 ::selection{background:color-mix(in srgb, var(--accent) 20%, transparent)}
 
-/* === CSS NAVIGASI TAMBAHAN === */
-.navigation{
-  display:flex; justify-content:space-between; align-items:center;
-  margin-top:3rem; padding-top:1.5rem;
-  border-top:1px solid var(--hair);
-  font-size:.95rem;
+/* === CSS NAVIGASI BARU (Apple-inspired) === */
+.navigation {
+  display: grid; /* Menggunakan grid untuk tata letak 2 kolom */
+  grid-template-columns: 1fr 1fr; /* 2 kolom sama lebar */
+  gap: 2rem; /* Jarak antar kolom */
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hair);
 }
-.nav-link{
-  text-decoration:none; color:var(--accent); font-weight:500;
-  transition:opacity .2s ease;
+.nav-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column; /* Menumpuk label dan judul secara vertikal */
+  transition: opacity .2s ease;
 }
-.nav-link:hover{opacity:.7}
-.nav-link.disabled{
-  color:var(--muted); pointer-events:none; opacity:.6;
+.nav-label {
+  font-size: 0.8rem; /* Ukuran font lebih kecil untuk label */
+  color: var(--muted); /* Warna abu-abu (muted) */
+  letter-spacing: 0.02em;
+  text-transform: uppercase; /* Label menjadi huruf kapital */
+  margin-bottom: 0.25rem;
 }
-/* === AKHIR CSS NAVIGASI === */
+.nav-title {
+  font-size: 1.1rem; /* Judul halaman lebih menonjol */
+  font-weight: 500;
+  color: var(--ink); /* Warna teks utama */
+  text-wrap: balance;
+  transition: color .2s ease;
+}
+.nav-link:hover .nav-title {
+  color: var(--accent); /* Judul berubah warna saat di-hover */
+}
+.nav-link.nav-next {
+  text-align: right; /* Rata kanan untuk link "Selanjutnya" */
+}
+.nav-link.nav-prev {
+  text-align: left; /* Rata kiri untuk link "Sebelumnya" */
+}
+/* Status non-aktif */
+.nav-link.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+/* === AKHIR CSS NAVIGASI BARU === */
 
 @media print{
   body{font-size:12pt; background:#fff}
