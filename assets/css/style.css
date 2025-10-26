@@ -64,48 +64,54 @@ p:last-of-type{margin-bottom:0}
 .buyLink:hover{background:color-mix(in srgb, var(--accent) 85%, black 15%); transform:translateY(-1px)}
 ::selection{background:color-mix(in srgb, var(--accent) 20%, transparent)}
 
-/* === CSS NAVIGASI BARU (Apple-inspired) === */
+/* === CSS NAVIGASI BARU (Simple Box) === */
 .navigation {
-  display: grid; /* Menggunakan grid untuk tata letak 2 kolom */
+  display: grid;
   grid-template-columns: 1fr 1fr; /* 2 kolom sama lebar */
-  gap: 2rem; /* Jarak antar kolom */
+  gap: 1rem; /* Jarak antar tombol */
   margin-top: 4rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--hair);
 }
 .nav-link {
   text-decoration: none;
-  display: flex;
-  flex-direction: column; /* Menumpuk label dan judul secara vertikal */
-  transition: opacity .2s ease;
-}
-.nav-label {
-  font-size: 0.8rem; /* Ukuran font lebih kecil untuk label */
-  color: var(--muted); /* Warna abu-abu (muted) */
-  letter-spacing: 0.02em;
-  text-transform: uppercase; /* Label menjadi huruf kapital */
-  margin-bottom: 0.25rem;
-}
-.nav-title {
-  font-size: 1.1rem; /* Judul halaman lebih menonjol */
+  display: block;
+  padding: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: var(--ink); /* Warna teks utama */
-  text-wrap: balance;
-  transition: color .2s ease;
+  color: var(--accent);
+  transition: background .2s ease, border-color .2s ease, transform .12s ease, box-shadow .2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
 }
-.nav-link:hover .nav-title {
-  color: var(--accent); /* Judul berubah warna saat di-hover */
+@media (prefers-color-scheme: dark){
+  .nav-link {
+     box-shadow: 0 1px 2px rgba(0,0,0,.5);
+  }
 }
-.nav-link.nav-next {
-  text-align: right; /* Rata kanan untuk link "Selanjutnya" */
+.nav-link:hover {
+  background: var(--bg);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,.08);
 }
-.nav-link.nav-prev {
-  text-align: left; /* Rata kiri untuk link "Sebelumnya" */
+@media (prefers-color-scheme: dark){
+  .nav-link:hover {
+     box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  }
 }
 /* Status non-aktif */
 .nav-link.disabled {
+  color: var(--muted);
+  background: var(--bg);
+  border-color: var(--hair);
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none;
 }
 /* === AKHIR CSS NAVIGASI BARU === */
 
